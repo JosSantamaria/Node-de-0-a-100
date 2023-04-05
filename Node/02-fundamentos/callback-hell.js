@@ -1,54 +1,54 @@
 const empleados = [
 
     {
-        id:1,
-        nombre:"Jos"
+        id: 1,
+        nombre: "Jos"
     }
     ,
     {
-        id:2,
-        nombre:"Maf"
+        id: 2,
+        nombre: "Maf"
     }
     ,
     {
-        id:3,
-        nombre:"Fernando"
+        id: 3,
+        nombre: "Fernando"
     }
     ,
     {
-        id:4,
-        nombre:"Linda"
+        id: 4,
+        nombre: "Linda"
     }
-    
+
 ];
 
-const salarios  = [
+const salarios = [
     {
-        id:1,
-        salario:1000
+        id: 1,
+        salario: 1000
     }
     ,
     {
-        id:2,
-        salario:1500
+        id: 2,
+        salario: 1500
     }
     ,
     {
-        id:3,
-        salario:2000
+        id: 3,
+        salario: 2000
     }
-    
-]; 
+
+];
 //Empleados
-const getEmpleado = (id,funcionCallback) => {
+const getEmpleado = (id, funcionCallback) => {
 
-    const empleado = empleados.find( (e) => e.id === id).nombre
+    const empleado = empleados.find(e => e.id === id).nombre
 
-    if(empleado){
+    if (empleado) {
 
-       funcionCallback(null,empleado);
+        funcionCallback(null, empleado);
 
-    }else{
+    } else {
 
         funcionCallback(`Empleado con id ${id} no existe`);
 
@@ -57,15 +57,15 @@ const getEmpleado = (id,funcionCallback) => {
 }
 
 //Salarios
-const getSalario = (id,funcionCallback) => {
+const getSalario = (id, funcionCallback) => {
 
-    const salario = salarios.find( (e) => e.id === id)?.salario;
+    const salario = salarios.find(e => e.id === id)?.salario;
 
-    if(salario){
+    if (salario) {
 
-       funcionCallback(null,salario);
+        funcionCallback(null, salario);
 
-    }else{
+    } else {
 
         funcionCallback(`El Salario para el empleado con id ${id} no existe`);
 
@@ -75,21 +75,20 @@ const getSalario = (id,funcionCallback) => {
 
 const id = 3;
 
-getEmpleado(id,( err ,empleado) => {
-    
-    if( err ){
+getEmpleado(id, (err, empleado) => {
+
+    if (err) {
         console.log('Error!');
-        return console.log( err);
+        return console.log(err);
     }
 
-    getSalario(id,( err , salario) => {
-    
-        if( err ){
-            return console.log( err);
+    getSalario(id, (err, salario) => {
+
+        if (err) {
+            return console.log(err);
         }
-    
-        console.log( 'El empleado:', empleado,'tiene un salario de:',salario);
+
+        console.log('El empleado:', empleado, 'tiene un salario de:', salario);
     })
 
 })
-

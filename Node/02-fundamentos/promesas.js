@@ -40,16 +40,53 @@ const salarios  = [
     
 ]; 
 
-const getEmpleado = (id,funcionCallback) => {
+const getEmpleado = (id) => {
 
     //resolve: callback cuando todo es correcto.
-    const promesa = new Promise( (resolve,reject) => {
-        //reject: callback cuando hay error.
-            const empleado = empleados.find( (e) => e.id === id)?.nombre
-                
+    return new Promise( (resolve,reject) => {
+        
+            const empleado = empleados.find( e => e.id === id)?.nombre
+            //Operador ternario:
+            empleado
+                ? resolve(empleado)
+                : reject(`No existe el empleado con el ID ${id}`)
                 
             });
+    // return promesa;
 }
 
-getEmpleado(id)
-    .then( empleado=> console.log(empleado) );
+const getSalario = (Sid) => {
+    return new Promise( (resolve,reject)=>{
+        const salario = salarios.find( s => s.id === Sid)?.salario
+
+        salario ? resolve(salario) : reject(`No existe el salario con el ID:${Sid}`)
+    });
+
+}
+const id = 4;//5: no existe
+const Sid = 2;//4: no existe
+
+// console.log(`Id de empleado: ${id} con el id de salario: ${Sid}`);
+// getEmpleado(id)
+// //En caso de no manejar la promesa o el error de la promesa tendremos un error feo 'ERR_UNHANDLED_REJECTION'
+//     .then( empleado=> console.log('Empleado:',empleado) )
+//     //Si agregamos el .catch() ya manejariamos mejor el error.
+//     .catch(err => console.log(err) );
+
+// getSalario(Sid)
+//     .then(salario => console.log('Salario: ',salario) )
+//     .catch( err => console.log(err));
+
+//Este es un CODIGO dificil de leer y de mantener
+// getEmpleado(id)
+//     .then( empleado => {
+//         getSalario(Sid)
+//             .then(salario => {
+//                 console.log('El empleado:', empleado, 'tiene un salario de:',salario)
+//             }).catch(err => console.log(err))
+// }).catch( err => console.log(err) );
+
+/***
+ * Promesas en cadena
+ */
+
