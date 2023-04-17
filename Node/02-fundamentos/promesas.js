@@ -90,3 +90,4 @@ const Sid = 2;//4: no existe
  * Promesas en cadena
  */
 
+//s
